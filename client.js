@@ -1,6 +1,11 @@
 const input = document.querySelector('input');
 const messages = document.getElementById('messages');
+const totalUsers = document.getElementById('total-users');
 const socket = io('http://localhost:3000');
+
+socket.on('user-joined', (total) => {  
+  totalUsers.innerText = total;
+});
 
 socket.on('chat-message', (message) => {
   let li = document.createElement('li');
